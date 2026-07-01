@@ -1,8 +1,8 @@
 # AI Chatbot
 
-A simple Streamlit chatbot built with LangChain and Gemini.
+A simple Streamlit chatbot built with Streamlit, LangChain, and Gemini.
 
-The app lets the user enter their own Gemini API key in the sidebar, then chat with the model in a clean chat interface. It also supports PDF upload. The PDF is converted into markdown first and then used as context for the chat, so the app follows a basic RAG style workflow instead of sending a raw PDF directly to the model.
+The app lets the user enter their own Gemini API key in the sidebar, then chat with the model in a clean chat interface. It also supports PDF upload for a small RAG workflow. When a PDF is uploaded, the app extracts the readable text, converts it into markdown, and sends that markdown as context to the model. This avoids sending the raw PDF file and helps save tokens.
 
 ## Features
 
@@ -12,7 +12,7 @@ The app lets the user enter their own Gemini API key in the sidebar, then chat w
 - LangChain message history
 - PDF upload support
 - PDF to markdown conversion
-- Basic RAG-style context retrieval from uploaded PDF content
+- Basic RAG and retrieval-style context from uploaded PDF content
 - Simple error handling for missing API key and Gemini API failures
 
 ## How The RAG Flow Works
@@ -21,10 +21,10 @@ The app lets the user enter their own Gemini API key in the sidebar, then chat w
 2. The app extracts readable text from the PDF.
 3. The extracted text is converted into markdown.
 4. The markdown is stored in Streamlit session state.
-5. When the user asks a question, the PDF markdown is added as context for Gemini.
+5. When the user asks a question, the PDF markdown is sent to Gemini as context.
 6. Gemini answers using both the chat history and the uploaded PDF context.
 
-This is a lightweight retrieval flow for a small chatbot. It keeps things simple and helps reduce token usage by sending cleaned markdown text instead of the original PDF file.
+This is a lightweight retrieval flow for a small chatbot. The main idea is simple: clean the PDF into markdown first, then send only that markdown context to the model. That makes the prompt easier for the model to read and helps reduce token usage compared with passing the full PDF directly.
 
 ## Tech Stack
 
