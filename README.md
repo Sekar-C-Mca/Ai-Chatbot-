@@ -2,6 +2,8 @@
 
 A simple Streamlit chatbot built with Streamlit, LangChain, and Gemini.
 
+![AI Chatbot home screen](assets/chatbot-home.png)
+
 The app lets the user enter their own Gemini API key in the sidebar, then chat with the model in a clean chat interface. It also supports PDF upload for a small RAG workflow. When a PDF is uploaded, the app extracts the readable text, converts it into markdown, and sends that markdown as context to the model. This avoids sending the raw PDF file and helps save tokens.
 
 ## Features
@@ -25,6 +27,12 @@ The app lets the user enter their own Gemini API key in the sidebar, then chat w
 6. Gemini answers using both the chat history and the uploaded PDF context.
 
 This is a lightweight retrieval flow for a small chatbot. The main idea is simple: clean the PDF into markdown first, then send only that markdown context to the model. That makes the prompt easier for the model to read and helps reduce token usage compared with passing the full PDF directly.
+
+## Screenshots
+
+Add screenshots here after running the app.
+
+![Chat with PDF context](assets/chatbot-pdf-context.png)
 
 ## Tech Stack
 
